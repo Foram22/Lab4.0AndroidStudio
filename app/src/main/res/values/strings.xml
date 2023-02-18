@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">FORAM_Score</string>
+    <string name="title_text">Score Board</string>
+    <string name="team_a">Team A</string>
+    <string name="team_b">Team B</string>
+    <string name="increase">Increase</string>
+    <string name="decrease">Decrease</string>
+</resources>
