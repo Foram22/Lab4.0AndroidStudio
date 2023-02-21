@@ -1,11 +1,8 @@
 <resources>
     <string name="app_name">FORAM_Score</string>
-<<<<<<< HEAD
     <string name="title_text">Score Board</string>
     <string name="team_a">Team A</string>
     <string name="team_b">Team B</string>
     <string name="increase">Increase</string>
     <string name="decrease">Decrease</string>
-=======
->>>>>>> c0dfdca87702470a79b738869127bf30e40360e9
 </resources>
