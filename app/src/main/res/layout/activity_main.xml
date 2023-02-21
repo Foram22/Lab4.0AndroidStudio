@@ -52,11 +52,11 @@
 
         <androidx.appcompat.widget.SwitchCompat
             android:id="@+id/switch_to_change"
+            style="@style/SwitchCompatStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_margin="20dp"
-            style="@style/SwitchCompatStyle"
             android:gravity="center" />
 
         <LinearLayout
@@ -76,12 +76,12 @@
 
             <TextView
                 android:id="@+id/tv_score_b"
-                android:padding="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/tv_background"
                 android:gravity="center"
+                android:padding="5dp"
                 android:text="0"
                 android:textColor="@color/blue_700"
                 android:textSize="18dp" />
@@ -128,11 +128,16 @@
 
     </LinearLayout>
 
-    <Spinner
-        android:background="@drawable/tv_background"
-        android:id="@+id/spinner_score_values"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp" />
+        android:layout_marginTop="10dp"
+        android:background="@drawable/tv_background">
+
+        <Spinner
+            android:id="@+id/spinner_score_values"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
 
 </LinearLayout>
