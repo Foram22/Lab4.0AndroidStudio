@@ -30,9 +30,11 @@ class MainActivity : AppCompatActivity() {
         // Setting the adapter to the instance of Spinner View
         spinnerScoreValues.adapter = adapter
 
+        // Set the initial score to both the teams as "0"
         tvScoreA.text = "0"
         tvScoreB.text = "0"
 
+        // Switch change listener to pass message when switch changes it's state
         switch.setOnCheckedChangeListener { _, isChecked ->
             val message: String = if (isChecked) "You have selected Team B for scoring"
             else "You have selected Team A for scoring"
