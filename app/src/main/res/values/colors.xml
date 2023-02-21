@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="purple_200">#FFBB86FC</color>
+<<<<<<< HEAD
     <color name="blue_700">#003F5C</color>
     <color name="blue_500">#138AC1</color>
     <color name="blue_200">#4D003F5C</color>
+=======
+>>>>>>> c0dfdca87702470a79b738869127bf30e40360e9
     <color name="purple_500">#FF6200EE</color>
     <color name="purple_700">#FF3700B3</color>
     <color name="teal_200">#FF03DAC5</color>

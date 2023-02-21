@@ -2,6 +2,7 @@ package com.foram.foram_score
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+<<<<<<< HEAD
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
@@ -50,5 +51,12 @@ class MainActivity : AppCompatActivity() {
 
         tvScoreA = findViewById(R.id.tv_score_a)
         tvScoreB = findViewById(R.id.tv_score_b)
+=======
+
+class MainActivity : AppCompatActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+>>>>>>> c0dfdca87702470a79b738869127bf30e40360e9
     }
 }
