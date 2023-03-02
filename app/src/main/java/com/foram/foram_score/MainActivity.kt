@@ -10,6 +10,7 @@ import com.foram.foram_score.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
+    // View Binding
     private lateinit var binding: ActivityMainBinding
 
     // Array of integers to display score values in the spinner view
@@ -31,6 +32,7 @@ class MainActivity : AppCompatActivity() {
         // Setting the adapter to the instance of Spinner View
         binding.spinnerScoreValues.adapter = adapter
 
+        // Spinner OnItemSelectedListener
         binding.spinnerScoreValues.onItemSelectedListener =
             object : AdapterView.OnItemSelectedListener {
                 override fun onNothingSelected(p0: AdapterView<*>?) {
@@ -38,7 +40,7 @@ class MainActivity : AppCompatActivity() {
                 }
 
                 override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-                    valueToIncDec = when (p2) {
+                    valueToIncDec = when (p2) {         // Setting var valueToIncDec value when spinner item is selected
                         0 -> {
                             printToastMessage("Please select any score value.")
                             0
@@ -59,10 +61,11 @@ class MainActivity : AppCompatActivity() {
             val message: String = if (isChecked) "You have selected Team B for scoring"
             else "You have selected Team A for scoring"
 
-            isScoringTeamA = !isChecked
+            isScoringTeamA = !isChecked         // Set isScoringTeamA as true or false when switch is check or unchecked respectively
             printToastMessage(message)
         }
 
+        // Increase Button On Click Event
         binding.btnIncrease.setOnClickListener {
             val incrementValue: Int
             if (valueToIncDec <= 0) {
@@ -71,15 +74,20 @@ class MainActivity : AppCompatActivity() {
                 if (isScoringTeamA) {
                     incrementValue =
                         Integer.parseInt(binding.tvScoreA.text as String) + valueToIncDec
+
+                    // Set incremented value to the scoring textView of team A
                     binding.tvScoreA.text = incrementValue.toString()
                 } else {
                     incrementValue =
                         Integer.parseInt(binding.tvScoreB.text as String) + valueToIncDec
+
+                    // Set incremented value to the scoring textView of team B
                     binding.tvScoreB.text = incrementValue.toString()
                 }
             }
         }
 
+        // Decrease Button On Click Event
         binding.btnDecrease.setOnClickListener {
             val decrementValue: Int
             if (valueToIncDec <= 0) {
@@ -88,14 +96,18 @@ class MainActivity : AppCompatActivity() {
                 if (isScoringTeamA) {
                     decrementValue =
                         Integer.parseInt(binding.tvScoreA.text as String) - valueToIncDec
-                    if (decrementValue >= 0)
+                    if (decrementValue >= 0){
+                        // Set decremented value to the scoring textView of team A
                         binding.tvScoreA.text = decrementValue.toString()
+                    }
                     else printToastMessage("Score value can not be negative.")
                 } else {
                     decrementValue =
                         Integer.parseInt(binding.tvScoreB.text as String) - valueToIncDec
-                    if (decrementValue >= 0)
+                    if (decrementValue >= 0) {
+                        // Set decremented value to the scoring textView of team B
                         binding.tvScoreB.text = decrementValue.toString()
+                    }
                     else printToastMessage("Score value can not be negative.")
                 }
             }
