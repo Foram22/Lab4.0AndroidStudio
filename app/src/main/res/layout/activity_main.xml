@@ -45,9 +45,8 @@
                 android:background="@drawable/tv_background"
                 android:gravity="center"
                 android:padding="5dp"
-                android:text="0"
                 android:textColor="@color/blue_700"
-                android:textSize="18dp" />
+                android:textSize="18sp" />
         </LinearLayout>
 
         <androidx.appcompat.widget.SwitchCompat
@@ -82,9 +81,8 @@
                 android:background="@drawable/tv_background"
                 android:gravity="center"
                 android:padding="5dp"
-                android:text="0"
                 android:textColor="@color/blue_700"
-                android:textSize="18dp" />
+                android:textSize="18sp" />
         </LinearLayout>
     </LinearLayout>
 
