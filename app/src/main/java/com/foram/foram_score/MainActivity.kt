@@ -6,14 +6,11 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
-import androidx.appcompat.widget.SwitchCompat
 import com.foram.foram_score.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-
-    private lateinit var switch: SwitchCompat
 
     // Array of integers to display score values in the spinner view
     private var scoreValues = arrayOf("Select Score Value", "1", "2", "3", "4", "5", "6")
@@ -41,10 +38,13 @@ class MainActivity : AppCompatActivity() {
                 }
 
                 override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-                    when (p2) {
-                        0 -> printToastMessage("Please select any score value.")
+                    valueToIncDec = when (p2) {
+                        0 -> {
+                            printToastMessage("Please select any score value.")
+                            0
+                        }
                         else -> {
-                            valueToIncDec = scoreValues[p2].toInt()
+                            scoreValues[p2].toInt()
                         }
                     }
                 }
@@ -55,7 +55,7 @@ class MainActivity : AppCompatActivity() {
         binding.tvScoreB.text = valueToIncDec.toString()
 
         // Switch change listener to pass message when switch changes it's state
-        switch.setOnCheckedChangeListener { _, isChecked ->
+        binding.switchToChange.setOnCheckedChangeListener { _, isChecked ->
             val message: String = if (isChecked) "You have selected Team B for scoring"
             else "You have selected Team A for scoring"
 
@@ -64,28 +64,40 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.btnIncrease.setOnClickListener {
-            val incrementValue : Int
-            if (isScoringTeamA) {
-                incrementValue = binding.tvScoreA.toString().toInt() + valueToIncDec
-                binding.tvScoreA.text = incrementValue.toString()
+            val incrementValue: Int
+            if (valueToIncDec <= 0) {
+                printToastMessage("Please select scoring value first.")
             } else {
-                incrementValue = binding.tvScoreB.toString().toInt() + valueToIncDec
-                binding.tvScoreB.text = incrementValue.toString()
+                if (isScoringTeamA) {
+                    incrementValue =
+                        Integer.parseInt(binding.tvScoreA.text as String) + valueToIncDec
+                    binding.tvScoreA.text = incrementValue.toString()
+                } else {
+                    incrementValue =
+                        Integer.parseInt(binding.tvScoreB.text as String) + valueToIncDec
+                    binding.tvScoreB.text = incrementValue.toString()
+                }
             }
         }
 
         binding.btnDecrease.setOnClickListener {
-            val decrementValue : Int
-            if (isScoringTeamA) {
-                decrementValue = binding.tvScoreA.toString().toInt() - valueToIncDec
-                if (decrementValue >= 0)
-                    binding.tvScoreA.text = decrementValue.toString()
-                else printToastMessage("Score value can not be negative.")
+            val decrementValue: Int
+            if (valueToIncDec <= 0) {
+                printToastMessage("Please select scoring value first.")
             } else {
-                decrementValue = binding.tvScoreB.toString().toInt() - valueToIncDec
-                if (decrementValue >= 0)
-                    binding.tvScoreB.text = decrementValue.toString()
-                else printToastMessage("Score value can not be negative.")
+                if (isScoringTeamA) {
+                    decrementValue =
+                        Integer.parseInt(binding.tvScoreA.text as String) - valueToIncDec
+                    if (decrementValue >= 0)
+                        binding.tvScoreA.text = decrementValue.toString()
+                    else printToastMessage("Score value can not be negative.")
+                } else {
+                    decrementValue =
+                        Integer.parseInt(binding.tvScoreB.text as String) - valueToIncDec
+                    if (decrementValue >= 0)
+                        binding.tvScoreB.text = decrementValue.toString()
+                    else printToastMessage("Score value can not be negative.")
+                }
             }
         }
     }
