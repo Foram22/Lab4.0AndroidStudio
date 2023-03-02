@@ -64,13 +64,28 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.btnIncrease.setOnClickListener {
-            var incrementValue = 0
+            val incrementValue : Int
             if (isScoringTeamA) {
                 incrementValue = binding.tvScoreA.toString().toInt() + valueToIncDec
                 binding.tvScoreA.text = incrementValue.toString()
             } else {
                 incrementValue = binding.tvScoreB.toString().toInt() + valueToIncDec
                 binding.tvScoreB.text = incrementValue.toString()
+            }
+        }
+
+        binding.btnDecrease.setOnClickListener {
+            val decrementValue : Int
+            if (isScoringTeamA) {
+                decrementValue = binding.tvScoreA.toString().toInt() - valueToIncDec
+                if (decrementValue >= 0)
+                    binding.tvScoreA.text = decrementValue.toString()
+                else printToastMessage("Score value can not be negative.")
+            } else {
+                decrementValue = binding.tvScoreB.toString().toInt() - valueToIncDec
+                if (decrementValue >= 0)
+                    binding.tvScoreB.text = decrementValue.toString()
+                else printToastMessage("Score value can not be negative.")
             }
         }
     }
