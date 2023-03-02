@@ -34,20 +34,21 @@ class MainActivity : AppCompatActivity() {
         // Setting the adapter to the instance of Spinner View
         binding.spinnerScoreValues.adapter = adapter
 
-        binding.spinnerScoreValues.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onNothingSelected(p0: AdapterView<*>?) {
+        binding.spinnerScoreValues.onItemSelectedListener =
+            object : AdapterView.OnItemSelectedListener {
+                override fun onNothingSelected(p0: AdapterView<*>?) {
 
-            }
+                }
 
-            override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-                when (p2) {
-                    0 -> printToastMessage("Please select any score value.")
-                    else -> {
-                        valueToIncDec = scoreValues[p2].toInt()
+                override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
+                    when (p2) {
+                        0 -> printToastMessage("Please select any score value.")
+                        else -> {
+                            valueToIncDec = scoreValues[p2].toInt()
+                        }
                     }
                 }
             }
-        }
 
         // Set the initial score to both the teams as var "valueToIncDec"
         binding.tvScoreA.text = valueToIncDec.toString()
@@ -60,6 +61,17 @@ class MainActivity : AppCompatActivity() {
 
             isScoringTeamA = !isChecked
             printToastMessage(message)
+        }
+
+        binding.btnIncrease.setOnClickListener {
+            var incrementValue = 0
+            if (isScoringTeamA) {
+                incrementValue = binding.tvScoreA.toString().toInt() + valueToIncDec
+                binding.tvScoreA.text = incrementValue.toString()
+            } else {
+                incrementValue = binding.tvScoreB.toString().toInt() + valueToIncDec
+                binding.tvScoreB.text = incrementValue.toString()
+            }
         }
     }
 
